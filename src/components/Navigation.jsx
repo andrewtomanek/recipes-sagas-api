@@ -10,21 +10,7 @@ const MainNavigation = styled.nav`
   width: 100%;
   height: 10vh;
   padding: 0rem 0.5rem;
-  @media all and (max-width: 980px) {
-    height: 20vh;
-    grid-auto-flow: row;
-    padding: 0.3rem 0.5rem;
-  }
-  @media all and (max-width: 736px) {
-    height: auto;
-    grid-auto-flow: row;
-    padding: 0.3rem 0.5rem;
-  }
-  @media all and (max-width: 480px) {
-    grid-auto-flow: row;
-    padding: 0.3rem 0.5rem;
-    height: auto;
-  }
+  border-bottom: 1px solid lightgrey;
 `;
 
 const NavigationList = styled.ul`
@@ -46,22 +32,20 @@ const NavigationItem = styled.li`
 const NavigationLink = styled(NavLink)`
   padding: 0.2rem 0.5rem;
   text-decoration: none;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   font-weight: 900;
-  color: darkblue;
-  background: var(--green);
+  color: var(--blue);
   border-radius: 0.5rem;
   border: 0.1rem solid white;
   &:hover {
-    color: var(--green);
-    background-color: white;
+    color: var(--purple);
   }
   &.active {
-    color: darkblue;
+    color: var(--blue);
   }
 `;
 
-const Navigation = (props) => {
+const Navigation = () => {
   const location = useLocation();
   return (
     <MainNavigation>

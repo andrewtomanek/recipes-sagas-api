@@ -64,7 +64,7 @@ export const BasicHeading = styled.h3`
   text-align: center;
   border-radius: 0.3rem;
   background-color: var(--blue);
-  color: var(--purple);
+  color: white;
 `;
 
 export const SubHeading = styled.h2`
@@ -163,7 +163,10 @@ const Detail = (props) => {
           <UpdateBox>
             <Update updateId={props.current.id} />
             <BasicText>Ohodnoť tento recept</BasicText>
-            <Rating updateRating={updateRating} />
+            <Rating
+              updateRating={updateRating}
+              starsSelected={props.current.score}
+            />
           </UpdateBox>
         </CardContainer>
       </PageLayout>

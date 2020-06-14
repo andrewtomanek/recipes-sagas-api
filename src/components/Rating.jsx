@@ -18,7 +18,7 @@ const Star = styled.p`
 `;
 
 const Rating = (props) => {
-  const [starsSelected, selectStar] = useState(0);
+  const [starsSelected, selectStar] = useState(props.starsSelected);
   const totalStars = 5;
 
   const setRating = (starId) => {

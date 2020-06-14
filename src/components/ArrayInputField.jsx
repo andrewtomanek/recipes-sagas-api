@@ -8,16 +8,18 @@ export const InputBox = styled.div`
   align-items: center;
   align-content: space-around;
   justify-content: center;
-  grid-gap: 1rem;
-  padding: 1rem 0.5rem;
+  padding: 0.1rem 0.5rem;
+  grid-gap: 0.2rem 2rem;
 `;
 
 export const InputButton = styled.button`
   padding: 0.3rem 0.1rem;
-  font-size: 0.6rem;
+  font-size: 0.9rem;
   font-weight: 900;
-  background-color: var(--green);
-  color: var(--blue);
+  color: var(--purple);
+  background-color: #fff;
+  border-radius: 0.5rem;
+  border: 0.1rem solid var(--purple);
   cursor: pointer;
   transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
   &:hover {
@@ -32,7 +34,7 @@ export const InputLabel = styled.label`
   font-size: 1rem;
   font-weight: 600;
   text-align: center;
-  color: #fff;
+  color: var(--purple);
 `;
 
 const ArrayInputField = (props) => {

@@ -15,6 +15,7 @@ const Star = styled.p`
   font-size: 1rem;
   text-align: center;
   font-weight: 900;
+  cursor: pointer;
   color: var(--purple);
 `;
 

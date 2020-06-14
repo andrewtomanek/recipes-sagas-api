@@ -36,6 +36,7 @@ export const FormContainer = styled.form`
   justify-content: center;
   grid-gap: 2rem;
   padding: 1rem 0.5rem;
+  width: 90vw;
 `;
 
 export const InputField = styled.input`
@@ -45,15 +46,16 @@ export const InputField = styled.input`
   font-weight: 600;
   text-align: center;
   background-color: #fff;
+  outline: none;
 `;
 
 export const InputLabel = styled.label`
   height: 100%;
   margin: 0;
   padding: 0.1rem 0.3rem;
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 600;
-  text-align: center;
+  text-align: left;
   color: grey;
 `;
 
