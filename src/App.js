@@ -6,13 +6,13 @@ import GlobalStyle from "./theme/globalStyle";
 
 const App = () => {
   return (
-    <>
+    <div className="layout">
       <GlobalStyle />
       <BrowserRouter>
         <Navigation />
         {routes}
       </BrowserRouter>
-    </>
+    </div>
   );
 };
 

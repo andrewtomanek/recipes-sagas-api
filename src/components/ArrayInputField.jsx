@@ -1,7 +1,41 @@
 import React from "react";
 import uuid from "uuid";
+import styled from "styled-components";
 
-const CustomIngredientInput = (props) => {
+export const InputBox = styled.div`
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  align-content: space-around;
+  justify-content: center;
+  grid-gap: 1rem;
+  padding: 1rem 0.5rem;
+`;
+
+export const InputButton = styled.button`
+  padding: 0.3rem 0.1rem;
+  font-size: 0.6rem;
+  font-weight: 900;
+  background-color: var(--green);
+  color: var(--blue);
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  &:hover {
+    color: var(--blue);
+  }
+`;
+
+export const InputLabel = styled.label`
+  height: 100%;
+  margin: 0;
+  padding: 0.1rem 0.3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+`;
+
+const ArrayInputField = (props) => {
   const addIngredientBelow = () => {
     const ingredients = props.values.ingredients;
     ingredients.splice(
@@ -46,24 +80,24 @@ const CustomIngredientInput = (props) => {
   };
 
   return (
-    <div>
-      <label htmlFor={props.id + "-name"}>Name</label>
+    <InputBox>
       <input
         type="text"
         id={props.id + "-name"}
         name="name"
+        placeholder="Vaše ingredience"
         value={props.name}
         onChange={handleChange}
         onBlur={handleBlur}
       />
-      <button type="button" onClick={removeIngredient}>
-        X
-      </button>
-      <button type="button" onClick={addIngredientBelow}>
-        +
-      </button>
-    </div>
+      <InputButton type="button" onClick={removeIngredient}>
+        X Odebrat
+      </InputButton>
+      <InputButton type="button" onClick={addIngredientBelow}>
+        + Přidat
+      </InputButton>
+    </InputBox>
   );
 };
 
-export default CustomIngredientInput;
+export default ArrayInputField;

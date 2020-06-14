@@ -39,14 +39,14 @@ const NavigationList = styled.ul`
 `;
 
 const NavigationItem = styled.li`
-  margin: 0 1rem;
+  padding: 1.2rem 1.5rem;
   text-decoration: none;
 `;
 
 const NavigationLink = styled(NavLink)`
   padding: 0.2rem 0.5rem;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   font-weight: 900;
   color: darkblue;
   background: var(--green);
@@ -68,7 +68,7 @@ const Navigation = (props) => {
       <NavigationList>
         <NavigationItem>
           <NavigationLink to="/">
-            {location.pathname === "/" ? "Recepty" : "<-"}
+            {location.pathname === "/" ? "Recepty" : "\u{2190}"}
           </NavigationLink>
         </NavigationItem>{" "}
         <NavigationItem>

@@ -3,11 +3,95 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { actions } from "../store/actions/actions";
 import { connect } from "react-redux";
-import CustomIngredientInput from "../components/CustomIngredientInput";
+import ArrayInputField from "../components/ArrayInputField";
+import styled from "styled-components";
+
+export const BasicButton = styled.button`
+  padding: 0.3rem 1rem;
+  font-size: 1.2rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  &:hover {
+    color: var(--purple);
+  }
+`;
+
+const PageLayout = styled.section`
+  display: grid;
+  grid-auto-flow: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0rem;
+  margin: 0rem;
+`;
+
+export const FormContainer = styled.form`
+  display: grid;
+  grid-auto-flow: row;
+  align-items: center;
+  align-content: space-around;
+  justify-content: center;
+  grid-gap: 2rem;
+  padding: 1rem 0.5rem;
+`;
+
+export const InputField = styled.input`
+  margin: 0;
+  padding: 0.1rem 0.3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  background-color: #fff;
+`;
+
+export const InputLabel = styled.label`
+  height: 100%;
+  margin: 0;
+  padding: 0.1rem 0.3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  color: grey;
+`;
+
+export const SubHeading = styled.h2`
+  padding: 0.1rem 0.3rem;
+  font-size: 1.2rem;
+  font-weight: 00;
+  text-align: left;
+  color: var(--blue);
+`;
+
+const SearchButton = styled(BasicButton)`
+  border: solid 0.1rem white;
+  border-radius: 0.3rem;
+  color: var(--blue);
+`;
+
+const ResetButton = styled(BasicButton)`
+  border: solid 0.1rem white;
+  border-radius: 0.3rem;
+  color: var(--blue);
+`;
+
+const ErrorText = styled.p`
+  margin: 0;
+  padding: 0.1rem 0.3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  border-radius: 0.3rem;
+  text-align: center;
+  color: var(--red);
+  height: 100%;
+`;
 
 const Creation = (props) => {
   return (
-    <div>
+    <PageLayout>
       <Formik
         initialValues={{
           name: "",
@@ -63,8 +147,8 @@ const Creation = (props) => {
             setValues,
           } = props;
           return (
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="name"></label>
+            <FormContainer onSubmit={handleSubmit}>
+              <InputLabel htmlFor="name">Název receptu</InputLabel>
               <input
                 id="name"
                 placeholder="Please enter name"
@@ -75,8 +159,9 @@ const Creation = (props) => {
                 className={errors.name && touched.name ? "error" : ""}
               />
               {errors.name && touched.name && (
-                <div className="input-feedback">{errors.name}</div>
+                <ErrorText>{errors.name}</ErrorText>
               )}{" "}
+              <InputLabel htmlFor="description">Úvodní text</InputLabel>
               <input
                 id="description"
                 placeholder="Enter your description"
@@ -89,34 +174,11 @@ const Creation = (props) => {
                 }
               />
               {errors.description && touched.description && (
-                <div className="input-feedback">{errors.description}</div>
+                <ErrorText>{errors.description}</ErrorText>
               )}{" "}
-              <input
-                id="duration"
-                placeholder="Enter  duration"
-                type="number"
-                value={values.duration}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className={errors.duration && touched.duration ? "error" : ""}
-              />
-              {errors.duration && touched.duration && (
-                <div className="input-feedback">{errors.duration}</div>
-              )}{" "}
-              <input
-                id="info"
-                placeholder="Enter info"
-                type="text"
-                value={values.info}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className={errors.info && touched.info ? "error" : ""}
-              />
-              {errors.info && touched.info && (
-                <div className="input-feedback">{errors.info}</div>
-              )}
+              <SubHeading>Ingredience</SubHeading>
               {values.ingredients.map((ingredient) => (
-                <CustomIngredientInput
+                <ArrayInputField
                   key={ingredient.id}
                   values={values}
                   errors={errors}
@@ -128,24 +190,50 @@ const Creation = (props) => {
                 />
               ))}
               {errors.ingredients && touched.ingredients && (
-                <div className="input-feedback">{errors.ingredients}</div>
+                <ErrorText>{errors.ingredients}</ErrorText>
               )}{" "}
-              <button
+              <InputLabel htmlFor="info">Postup</InputLabel>
+              <input
+                id="info"
+                placeholder="Enter info"
+                type="text"
+                value={values.info}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={errors.info && touched.info ? "error" : ""}
+              />
+              {errors.info && touched.info && (
+                <ErrorText>{errors.info}</ErrorText>
+              )}
+              <InputLabel htmlFor="duration">Čas</InputLabel>
+              <input
+                id="duration"
+                placeholder="Enter  duration"
+                type="number"
+                value={values.duration}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={errors.duration && touched.duration ? "error" : ""}
+              />
+              {errors.duration && touched.duration && (
+                <ErrorText>{errors.duration}</ErrorText>
+              )}{" "}
+              <ResetButton
                 type="button"
                 className="outline"
                 onClick={handleReset}
                 disabled={!dirty || isSubmitting}
               >
                 Reset
-              </button>
-              <button type="submit" disabled={isSubmitting}>
+              </ResetButton>
+              <SearchButton type="submit" disabled={isSubmitting}>
                 Submit
-              </button>
-            </form>
+              </SearchButton>
+            </FormContainer>
           );
         }}
       </Formik>
-    </div>
+    </PageLayout>
   );
 };
 

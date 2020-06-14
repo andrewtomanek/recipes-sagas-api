@@ -1,16 +1,109 @@
 import React, { useState, useEffect } from "react";
 import { actions } from "../store/actions/actions";
 import { connect } from "react-redux";
-import RatingDisplay from "../components/RatingDisplay";
+import StarsDisplay from "../components/StarsDisplay";
+import styled from "styled-components";
+
+const PageLayout = styled.section`
+  display: grid;
+  grid-auto-flow: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 2rem 1rem;
+  margin: 0rem;
+`;
+
+const ArticleWrap = styled.article`
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
+  height: 100%;
+  padding: 1rem 0.5rem;
+  border-bottom: 1px solid lightgrey;
+`;
+
+export const DetailButton = styled.button`
+  padding: 0.3rem 1rem;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--blue);
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  &:hover {
+    color: var(--purple);
+  }
+`;
+
+export const RemoveButton = styled.button`
+  padding: 0.3rem 1rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--blue);
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  &:hover {
+    color: var(--purple);
+  }
+`;
+
+export const ContentBox = styled.div`
+  display: grid;
+  grid-auto-flow: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0.1rem 0.3rem;
+  width: 50vw;
+`;
+
+export const BottomBox = styled.div`
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.1rem 0.3rem;
+`;
+
+export const TimeBox = styled.div`
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.1rem 0.3rem;
+`;
+
+export const CoverPic = styled.img`
+  height: 15vh;
+  padding: 1rem;
+`;
+
+export const IconPic = styled.img`
+  width: 100%;
+  height: 100%;
+  padding: 0rem;
+  margin: 0rem;
+  padding: 0.1rem 0.3rem;
+`;
+
+export const TimeText = styled.p`
+  color: darkgrey;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.1rem 0.5rem;
+  margin: 0rem;
+  text-align: left;
+  text-decoration: none;
+  border-radius: 1rem;
+`;
 
 const Home = (props) => {
-  const [listData, setListData] = useState([]);
   const [pickedId, setPickedId] = useState(null);
   const [picked, setPicked] = useState(false);
 
   useEffect(() => {
     props.loadListData();
-    setListData(props.listData);
   }, []);
 
   useEffect(() => {
@@ -24,40 +117,36 @@ const Home = (props) => {
   };
 
   return (
-    <>
-      <div className="output">{JSON.stringify(props.listData, null, 2)}</div>
-      <div className="output">{JSON.stringify(props.deleted, null, 2)}</div>
-      <div className="output">{JSON.stringify(listData, null, 2)}</div>
-      <ul>
-        {props.listData &&
-          props.listData.length > 0 &&
-          props.listData.map((item) => {
-            return (
-              <li key={item.id}>
-                <ul>
-                  <li>
-                    <img
-                      src={process.env.PUBLIC_URL + "/food.png"}
-                      alt="food"
-                    />
-                  </li>
-                  <li> {item.name}</li>
-                  <li>{item.duration}</li>
-                  <li>
-                    <img
-                      src={process.env.PUBLIC_URL + "/time.png"}
-                      alt="food"
-                    />
-                  </li>
-                  <RatingDisplay starsSelected={item.score} />
-                </ul>
-                <button onClick={() => openDetail(item.id)}>pick</button>{" "}
-                <button onClick={() => props.remove(item.id)}>remove</button>{" "}
-              </li>
-            );
-          })}
-      </ul>
-    </>
+    <PageLayout>
+      {props.listData &&
+        props.listData.length > 0 &&
+        props.listData.map((item) => {
+          return (
+            <ArticleWrap key={item.id}>
+              <CoverPic
+                src={process.env.PUBLIC_URL + "/food.png"}
+                alt={item.name}
+              />
+              <ContentBox>
+                <DetailButton onClick={() => openDetail(item.id)}>
+                  {" "}
+                  {item.name}
+                </DetailButton>
+                <StarsDisplay starsSelected={item.score} />
+                <BottomBox>
+                  <TimeBox>
+                    <TimeText> {"\u{23F1}"}</TimeText>
+                    <TimeText>{item.duration} min.</TimeText>
+                  </TimeBox>
+                  <RemoveButton onClick={() => props.remove(item.id)}>
+                    remove
+                  </RemoveButton>{" "}
+                </BottomBox>
+              </ContentBox>
+            </ArticleWrap>
+          );
+        })}
+    </PageLayout>
   );
 };
 

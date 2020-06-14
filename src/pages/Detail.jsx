@@ -5,6 +5,123 @@ import { connect } from "react-redux";
 import Update from "../components/Update";
 import Rating from "../components/Rating";
 import RatingDisplay from "../components/RatingDisplay";
+import styled from "styled-components";
+
+export const PageLayout = styled.section`
+  display: grid;
+  grid-auto-flow: row;
+  justify-items: center;
+  align-items: center;
+  margin: 0;
+  padding: 0rem 2rem;
+  min-height: 80vh;
+  overflow: hidden;
+`;
+
+export const CardContainer = styled.div`
+  display: grid;
+  grid-auto-flow: row;
+  grid-gap: 1rem;
+  align-items: center;
+  justify-items: center;
+  margin: 0;
+  padding: 1rem;
+  width: 100%;
+`;
+
+export const HeaderBox = styled.header`
+  display: grid;
+  grid-auto-flow: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0.1rem 0.3rem;
+  width: 80vw;
+`;
+
+export const CoverPic = styled.img`
+  width: 100%;
+  padding: 0rem;
+  margin: 0rem;
+  padding: 0.1rem 0.3rem;
+`;
+
+export const BottomBox = styled.div`
+  display: grid;
+  grid-template-columns: 5fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: var(--purple);
+  padding: 0.1rem 0.3rem;
+`;
+
+export const BasicHeading = styled.h3`
+  margin: 0;
+  padding: 0.1rem 0.3rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-align: center;
+  border-radius: 0.3rem;
+  background-color: var(--blue);
+  color: var(--purple);
+`;
+
+export const SubHeading = styled.h2`
+  padding: 0.1rem 0.3rem;
+  font-size: 1.2rem;
+  font-weight: 00;
+  text-align: left;
+  color: var(--blue);
+`;
+
+export const TextContainer = styled.div`
+  display: grid;
+  grid-auto-flow: row;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  width: 90%;
+`;
+
+export const BasicText = styled.p`
+  margin: 0;
+  padding: 0.1rem 0.3rem;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: left;
+`;
+
+export const TimeText = styled.p`
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.1rem 0.2rem;
+  text-align: center;
+`;
+
+export const UpdateBox = styled.div`
+  display: grid;
+  grid-auto-flow: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0.1rem 0.3rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-align: center;
+  color: white;
+  background-color: var(--blue);
+`;
+
+export const ListBox = styled.ul`
+  display: grid;
+  grid-auto-flow: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0.1rem 0.3rem;
+`;
 
 const Detail = (props) => {
   let { itemId } = useParams();
@@ -19,37 +136,37 @@ const Detail = (props) => {
 
   return (
     props.current && (
-      <>
-        {itemId}
-        <ul key={props.current.id}>
-          <li>
-            <img src={process.env.PUBLIC_URL + "/time.png"} alt="food" />
-          </li>
-          <li> {props.current.name}</li>
-          <li>
-            {" "}
-            <RatingDisplay starsSelected={props.current.score} />
-          </li>
-          <li>{props.current.duration}</li>
-          <li>{props.current.description}</li>
-          <li className="output">
-            <ul>
+      <PageLayout>
+        <CardContainer>
+          <HeaderBox>
+            <CoverPic src={process.env.PUBLIC_URL + "/food.png"} alt="food" />
+            <BasicHeading> {props.current.name}</BasicHeading>
+            <BottomBox>
+              <RatingDisplay starsSelected={props.current.score} />
+              <TimeText>{"\u{23F1}"}</TimeText>
+              <TimeText>{props.current.duration}min. </TimeText>
+            </BottomBox>
+          </HeaderBox>
+          <TextContainer>
+            <BasicText BasicText>{props.current.description}</BasicText>
+            <SubHeading>Ingredience</SubHeading>
+            <ListBox>
               {props.current.ingredients.map((item, index) => (
-                <li key={index}>{item}</li>
+                <li key={index}>
+                  <BasicText>{item}</BasicText>
+                </li>
               ))}
-            </ul>
-          </li>
-          <li>{props.current.info}</li>
-          <li>{props.current.id}</li>
-          <li>
+            </ListBox>
+            <SubHeading>Příprava jídla</SubHeading>
+            <BasicText>{props.current.info}</BasicText>
+          </TextContainer>
+          <UpdateBox>
             <Update updateId={props.current.id} />
-          </li>
-          <li>
+            <BasicText>Ohodnoť tento recept</BasicText>
             <Rating updateRating={updateRating} />
-          </li>
-        </ul>
-        <div className="output">{JSON.stringify(props.current, null, 2)}</div>
-      </>
+          </UpdateBox>
+        </CardContainer>
+      </PageLayout>
     )
   );
 };

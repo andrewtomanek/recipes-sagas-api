@@ -7,18 +7,18 @@ const Stars = styled.div`
   grid-template-rows: 1fr;
   align-items: center;
   justify-content: space-around;
+  width: 50%;
 `;
 
 const Star = styled.p`
-  padding: 0rem 0.3rem;
-  font-size: 2rem;
+  padding: 0.3rem;
+  font-size: 1rem;
   text-align: center;
   font-weight: 900;
-  color: white;
-  background-color: var(--purple);
+  color: var(--purple);
 `;
 
-const RatingDisplay = (props) => {
+const StarsDisplay = (props) => {
   const totalStars = 5;
 
   return (
@@ -30,4 +30,4 @@ const RatingDisplay = (props) => {
   );
 };
 
-export default RatingDisplay;
+export default StarsDisplay;

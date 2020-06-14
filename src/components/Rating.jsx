@@ -13,8 +13,8 @@ const Star = styled.p`
   padding: 0.3rem;
   font-size: 3rem;
   text-align: center;
-  color: white;
-  background-color: darkblue;
+  font-weight: 900;
+  color: var(--purple);
 `;
 
 const Rating = (props) => {
