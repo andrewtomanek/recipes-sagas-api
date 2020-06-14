@@ -105,6 +105,7 @@ export const TimeText = styled.p`
 export const UpdateBox = styled.div`
   display: grid;
   grid-auto-flow: row;
+  grid-gap: 1rem;
   align-items: center;
   justify-content: center;
   padding: 0.1rem 0.3rem;
@@ -162,7 +163,7 @@ const Detail = (props) => {
           </TextContainer>
           <UpdateBox>
             <Update updateId={props.current.id} />
-            <BasicText>Ohodnoť tento recept</BasicText>
+            <BasicHeading>Ohodnoť tento recept</BasicHeading>
             <Rating
               updateRating={updateRating}
               starsSelected={props.current.score}

@@ -55,6 +55,9 @@ const Navigation = () => {
             {location.pathname === "/" ? "Recepty" : "\u{2190}"}
           </NavigationLink>
         </NavigationItem>{" "}
+        {location.pathname === "/create" && (
+          <NavigationItem> Přidat recept</NavigationItem>
+        )}
         <NavigationItem>
           <NavigationLink to="/create">+</NavigationLink>
         </NavigationItem>{" "}

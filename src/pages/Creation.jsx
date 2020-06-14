@@ -6,17 +6,6 @@ import { connect } from "react-redux";
 import ArrayInputField from "../components/ArrayInputField";
 import styled from "styled-components";
 
-export const BasicButton = styled.button`
-  padding: 0.3rem 1rem;
-  font-size: 1.2rem;
-  font-weight: 900;
-  cursor: pointer;
-  transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  &:hover {
-    color: var(--purple);
-  }
-`;
-
 const PageLayout = styled.section`
   display: grid;
   grid-auto-flow: row;
@@ -24,8 +13,6 @@ const PageLayout = styled.section`
   align-items: center;
   width: 100%;
   height: 100%;
-  padding: 0rem;
-  margin: 0rem;
 `;
 
 export const FormContainer = styled.form`
@@ -36,7 +23,6 @@ export const FormContainer = styled.form`
   justify-content: center;
   grid-gap: 2rem;
   padding: 1rem 0.5rem;
-  width: 90vw;
 `;
 
 export const InputField = styled.input`
@@ -67,6 +53,18 @@ export const SubHeading = styled.h2`
   color: var(--blue);
 `;
 
+export const BasicButton = styled.button`
+  padding: 0.3rem 1rem;
+  font-size: 1.2rem;
+  font-weight: 900;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  &:hover {
+    color: var(--purple);
+  }
+`;
+
 const SearchButton = styled(BasicButton)`
   border: solid 0.1rem white;
   border-radius: 0.3rem;
@@ -75,7 +73,6 @@ const SearchButton = styled(BasicButton)`
 
 const ResetButton = styled(BasicButton)`
   border: solid 0.1rem white;
-  border-radius: 0.3rem;
   color: var(--blue);
 `;
 

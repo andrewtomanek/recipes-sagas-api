@@ -11,19 +11,25 @@ const Stars = styled.div`
 
 const Star = styled.p`
   padding: 0.3rem;
-  font-size: 3rem;
+  font-size: 2rem;
   text-align: center;
   font-weight: 900;
-  color: var(--purple);
+  color: white;
 `;
 
 const Rating = (props) => {
   const [starsSelected, selectStar] = useState(props.starsSelected);
+  const [voted, setVoted] = useState(false);
   const totalStars = 5;
 
   const setRating = (starId) => {
-    selectStar(starId);
-    props.updateRating(starId);
+    setVoted(true);
+    localStorage.setItem("voted", JSON.stringify("voted"));
+    let votedOnce = localStorage.getItem("voted");
+    if (!voted && votedOnce !== "voted") {
+      selectStar(starId);
+      props.updateRating(starId);
+    }
   };
 
   return (
