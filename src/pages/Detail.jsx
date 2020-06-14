@@ -125,6 +125,8 @@ export const ListBox = styled.ul`
 `;
 
 const Detail = (props) => {
+  const itemData = props.current;
+
   let { itemId } = useParams();
 
   useEffect(() => {
@@ -141,32 +143,33 @@ const Detail = (props) => {
         <CardContainer>
           <HeaderBox>
             <CoverPic src={process.env.PUBLIC_URL + "/food.png"} alt="food" />
-            <BasicHeading> {props.current.name}</BasicHeading>
+            <BasicHeading> {itemData.name}</BasicHeading>
             <BottomBox>
-              <RatingDisplay starsSelected={props.current.score} />
+              <RatingDisplay starsSelected={Math.round(props.current.score)} />
               <TimeText>{"\u{23F1}"}</TimeText>
-              <TimeText>{props.current.duration}min. </TimeText>
+              <TimeText>{itemData.duration}min. </TimeText>
             </BottomBox>
           </HeaderBox>
           <TextContainer>
-            <BasicText BasicText>{props.current.description}</BasicText>
+            <BasicText BasicText>{itemData.description}</BasicText>
             <SubHeading>Ingredience</SubHeading>
             <ListBox>
-              {props.current.ingredients.map((item, index) => (
+              {itemData.ingredients.map((item, index) => (
                 <li key={index}>
                   <BasicText>{item}</BasicText>
                 </li>
               ))}
             </ListBox>
             <SubHeading>Příprava jídla</SubHeading>
-            <BasicText>{props.current.info}</BasicText>
+            <BasicText>{itemData.info}</BasicText>
           </TextContainer>
           <UpdateBox>
-            <Update updateId={props.current.id} />
+            <Update updateId={itemData.id} />
             <BasicHeading>Ohodnoť tento recept</BasicHeading>
             <Rating
               updateRating={updateRating}
-              starsSelected={props.current.score}
+              starsSelected={Math.round(props.current.score)}
+              currentId={itemData.id}
             />
           </UpdateBox>
         </CardContainer>

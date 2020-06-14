@@ -18,15 +18,15 @@ const Star = styled.p`
 `;
 
 const Rating = (props) => {
-  const [starsSelected, selectStar] = useState(props.starsSelected);
+  const [starsSelected, selectStar] = useState(+props.starsSelected);
   const [voted, setVoted] = useState(false);
   const totalStars = 5;
 
   const setRating = (starId) => {
     setVoted(true);
-    localStorage.setItem("voted", JSON.stringify("voted"));
-    let votedOnce = localStorage.getItem("voted");
-    if (!voted && votedOnce !== "voted") {
+    let votedOnce = localStorage.getItem(props.currentId);
+    if (!voted && !votedOnce) {
+      localStorage.setItem(props.currentId, JSON.stringify("voted"));
       selectStar(starId);
       props.updateRating(starId);
     }

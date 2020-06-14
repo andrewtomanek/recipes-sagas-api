@@ -10,7 +10,6 @@ const initState = {
 };
 
 export const rootReducer = (state = initState, action) => {
-  console.log(action);
   switch (action.type) {
     case actionTypes.LOAD_LIST_DATA_SUCCESS:
       return {

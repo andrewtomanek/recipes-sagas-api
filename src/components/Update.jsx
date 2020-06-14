@@ -72,64 +72,62 @@ const ErrorText = styled.p`
 
 const Update = (props) => {
   return (
-    <div>
-      <Formik
-        initialValues={{
-          name: "",
-        }}
-        onSubmit={(values, { setSubmitting }) => {
-          props.update([values, props.updateId]);
-          setSubmitting(false);
-        }}
-        validationSchema={Yup.object().shape({
-          name: Yup.string()
-            .max(20, "Please enter no more than 20 characters")
-            .required("Please enter name"),
-        })}
-      >
-        {(props) => {
-          const {
-            values,
-            touched,
-            errors,
-            dirty,
-            isSubmitting,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            handleReset,
-          } = props;
-          return (
-            <FormContainer onSubmit={handleSubmit}>
-              <InputLabel htmlFor="name"></InputLabel>
-              <input
-                id="name"
-                placeholder="Please enter new name"
-                type="text"
-                value={values.name}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className={errors.name && touched.name ? "error" : ""}
-              />
-              {errors.name && touched.name && (
-                <ErrorText>{errors.name}</ErrorText>
-              )}{" "}
-              <ResetButton
-                type="button"
-                className="outline"
-                onClick={handleReset}
-                disabled={!dirty || isSubmitting}
-              >
-                Reset
-              </ResetButton>
-              <SearchButton type="submit" disabled={isSubmitting}>
-                Submit
-              </SearchButton>
-            </FormContainer>
-          );
-        }}
-      </Formik>
-    </div>
+    <Formik
+      initialValues={{
+        name: "",
+      }}
+      onSubmit={(values, { setSubmitting }) => {
+        props.update([values, props.updateId]);
+        setSubmitting(false);
+      }}
+      validationSchema={Yup.object().shape({
+        name: Yup.string()
+          .max(20, "Please enter no more than 20 characters")
+          .required("Please enter name"),
+      })}
+    >
+      {(props) => {
+        const {
+          values,
+          touched,
+          errors,
+          dirty,
+          isSubmitting,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          handleReset,
+        } = props;
+        return (
+          <FormContainer onSubmit={handleSubmit}>
+            <InputLabel htmlFor="name"></InputLabel>
+            <input
+              id="name"
+              placeholder="Please enter new name"
+              type="text"
+              value={values.name}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={errors.name && touched.name ? "error" : ""}
+            />
+            {errors.name && touched.name && (
+              <ErrorText>{errors.name}</ErrorText>
+            )}{" "}
+            <ResetButton
+              type="button"
+              className="outline"
+              onClick={handleReset}
+              disabled={!dirty || isSubmitting}
+            >
+              Reset
+            </ResetButton>
+            <SearchButton type="submit" disabled={isSubmitting}>
+              Submit
+            </SearchButton>
+          </FormContainer>
+        );
+      }}
+    </Formik>
   );
 };
 

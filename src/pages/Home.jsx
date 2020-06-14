@@ -132,7 +132,7 @@ const Home = (props) => {
                   {" "}
                   {item.name}
                 </DetailButton>
-                <StarsDisplay starsSelected={item.score} />
+                <StarsDisplay starsSelected={Math.round(item.score)} />
                 <BottomBox>
                   <TimeBox>
                     <TimeText> {"\u{23F1}"}</TimeText>
