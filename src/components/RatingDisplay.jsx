@@ -1,22 +1,6 @@
 import React from "react";
+import { Stars } from "../styles/elements";
 import styled from "styled-components";
-
-const Stars = styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 1fr;
-  align-items: center;
-  justify-content: space-around;
-`;
-
-const Star = styled.p`
-  padding: 0rem 0.3rem;
-  font-size: 2rem;
-  text-align: center;
-  font-weight: 900;
-  color: white;
-  background-color: var(--purple);
-`;
 
 const RatingDisplay = (props) => {
   const totalStars = 5;
@@ -31,3 +15,12 @@ const RatingDisplay = (props) => {
 };
 
 export default RatingDisplay;
+
+const Star = styled.p`
+  padding: 0rem 0.3rem;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 900;
+  color: white;
+  background-color: var(--purple);
+`;

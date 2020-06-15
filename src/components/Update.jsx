@@ -3,6 +3,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { actions } from "../store/actions/actions";
 import { connect } from "react-redux";
+import { BasicButton } from "../styles/elements";
 import styled from "styled-components";
 
 export const FormContainer = styled.form`
@@ -36,24 +37,18 @@ export const InputLabel = styled.label`
   color: grey;
 `;
 
-export const BasicButton = styled.button`
-  padding: 0.3rem 1rem;
+const SearchButton = styled(BasicButton)`
   font-size: 1rem;
   font-weight: 900;
   border-radius: 0.3rem;
-  cursor: pointer;
-  transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  &:hover {
-    color: var(--purple);
-  }
-`;
-
-const SearchButton = styled(BasicButton)`
   border: solid 0.1rem white;
   color: var(--blue);
 `;
 
 const ResetButton = styled(BasicButton)`
+  font-size: 1rem;
+  font-weight: 900;
+  border-radius: 0.3rem;
   border: solid 0.1rem white;
   color: var(--blue);
 `;

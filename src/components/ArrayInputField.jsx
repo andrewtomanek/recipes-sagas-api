@@ -1,41 +1,7 @@
 import React from "react";
 import uuid from "uuid";
+import { GridBox, InputBox, BasicButton } from "../styles/elements";
 import styled from "styled-components";
-
-export const InputBox = styled.div`
-  display: grid;
-  grid-auto-flow: column;
-  align-items: center;
-  align-content: space-around;
-  justify-content: center;
-  padding: 0.1rem 0.5rem;
-  grid-gap: 0.2rem 2rem;
-`;
-
-export const InputButton = styled.button`
-  padding: 0.3rem 0.1rem;
-  font-size: 0.9rem;
-  font-weight: 900;
-  color: var(--purple);
-  background-color: #fff;
-  border-radius: 0.5rem;
-  border: 0.1rem solid var(--purple);
-  cursor: pointer;
-  transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  &:hover {
-    color: var(--blue);
-  }
-`;
-
-export const InputLabel = styled.label`
-  height: 100%;
-  margin: 0;
-  padding: 0.1rem 0.3rem;
-  font-size: 1rem;
-  font-weight: 600;
-  text-align: center;
-  color: var(--purple);
-`;
 
 const ArrayInputField = (props) => {
   const addIngredientBelow = () => {
@@ -82,8 +48,8 @@ const ArrayInputField = (props) => {
   };
 
   return (
-    <InputBox>
-      <input
+    <InputElement>
+      <InputField
         type="text"
         id={props.id + "-name"}
         name="name"
@@ -98,8 +64,32 @@ const ArrayInputField = (props) => {
       <InputButton type="button" onClick={addIngredientBelow}>
         + Přidat
       </InputButton>
-    </InputBox>
+    </InputElement>
   );
 };
 
 export default ArrayInputField;
+
+const InputElement = styled(GridBox)`
+  grid-auto-flow: column;
+  align-content: space-around;
+  padding: 0.1rem 0.5rem;
+  grid-gap: 0.2rem 2rem;
+`;
+
+const InputField = styled(InputBox)`
+  font-size: 1rem;
+  font-weight: 700;
+`;
+
+const InputButton = styled(BasicButton)`
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: var(--purple);
+  background-color: #fff;
+  border-radius: 0.5rem;
+  border: 0.1rem solid var(--purple);
+  &:hover {
+    color: var(--blue);
+  }
+`;

@@ -1,21 +1,6 @@
 import React, { useState } from "react";
+import { Stars } from "../styles/elements";
 import styled from "styled-components";
-
-const Stars = styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 1fr;
-  align-items: center;
-  justify-content: space-around;
-`;
-
-const Star = styled.p`
-  padding: 0.3rem;
-  font-size: 2rem;
-  text-align: center;
-  font-weight: 900;
-  color: white;
-`;
 
 const Rating = (props) => {
   const [starsSelected, selectStar] = useState(+props.starsSelected);
@@ -44,3 +29,11 @@ const Rating = (props) => {
 };
 
 export default Rating;
+
+const Star = styled.p`
+  padding: 0.3rem;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 900;
+  color: white;
+`;

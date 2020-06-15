@@ -36,16 +36,6 @@ body {
   margin: 0rem;
 }
 
-button {
-font-family: 'Georgia',monospace;}
-
-
-label {
-    display: block;
-    margin-bottom: .8rem;
-    font-size: 20px;
-}
-
 input {
     border: 0.2rem solid none;
       margin: 0;
@@ -75,6 +65,7 @@ button.outline {
 }
 
 button {
+    font-family: 'Georgia',monospace;
     border-style: none;
      cursor: pointer;
     outline: none;

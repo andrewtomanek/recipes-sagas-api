@@ -2,6 +2,29 @@ import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
+const Navigation = () => {
+  const location = useLocation();
+  return (
+    <MainNavigation>
+      <NavigationList>
+        <NavigationItem>
+          <NavigationLink to="/">
+            {location.pathname === "/" ? "Recepty" : "\u{2190}"}
+          </NavigationLink>
+        </NavigationItem>{" "}
+        {location.pathname === "/create" && (
+          <NavigationItem> Přidat recept</NavigationItem>
+        )}
+        <NavigationItem>
+          <NavigationLink to="/create">+</NavigationLink>
+        </NavigationItem>{" "}
+      </NavigationList>
+    </MainNavigation>
+  );
+};
+
+export default Navigation;
+
 const MainNavigation = styled.nav`
   display: grid;
   grid-auto-flow: column;
@@ -44,26 +67,3 @@ const NavigationLink = styled(NavLink)`
     color: var(--blue);
   }
 `;
-
-const Navigation = () => {
-  const location = useLocation();
-  return (
-    <MainNavigation>
-      <NavigationList>
-        <NavigationItem>
-          <NavigationLink to="/">
-            {location.pathname === "/" ? "Recepty" : "\u{2190}"}
-          </NavigationLink>
-        </NavigationItem>{" "}
-        {location.pathname === "/create" && (
-          <NavigationItem> Přidat recept</NavigationItem>
-        )}
-        <NavigationItem>
-          <NavigationLink to="/create">+</NavigationLink>
-        </NavigationItem>{" "}
-      </NavigationList>
-    </MainNavigation>
-  );
-};
-
-export default Navigation;

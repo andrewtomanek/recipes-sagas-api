@@ -4,89 +4,14 @@ import * as Yup from "yup";
 import { actions } from "../store/actions/actions";
 import { connect } from "react-redux";
 import ArrayInputField from "../components/ArrayInputField";
+import {
+  FormBox,
+  InputBox,
+  LabelText,
+  ErrorText,
+  BasicButton,
+} from "../styles/elements";
 import styled from "styled-components";
-
-const PageLayout = styled.section`
-  display: grid;
-  grid-auto-flow: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-`;
-
-export const FormContainer = styled.form`
-  display: grid;
-  grid-auto-flow: row;
-  align-items: center;
-  align-content: space-around;
-  justify-content: center;
-  grid-gap: 2rem;
-  padding: 1rem 0.5rem;
-`;
-
-export const InputField = styled.input`
-  margin: 0;
-  padding: 0.1rem 0.3rem;
-  font-size: 1rem;
-  font-weight: 600;
-  text-align: center;
-  background-color: #fff;
-  outline: none;
-`;
-
-export const InputLabel = styled.label`
-  height: 100%;
-  margin: 0;
-  padding: 0.1rem 0.3rem;
-  font-size: 1.3rem;
-  font-weight: 600;
-  text-align: left;
-  color: grey;
-`;
-
-export const SubHeading = styled.h2`
-  padding: 0.1rem 0.3rem;
-  font-size: 1.2rem;
-  font-weight: 00;
-  text-align: left;
-  color: var(--blue);
-`;
-
-export const BasicButton = styled.button`
-  padding: 0.3rem 1rem;
-  font-size: 1.2rem;
-  font-weight: 900;
-  border-radius: 0.3rem;
-  cursor: pointer;
-  transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  &:hover {
-    color: var(--purple);
-  }
-`;
-
-const SearchButton = styled(BasicButton)`
-  border: solid 0.1rem white;
-  border-radius: 0.3rem;
-  color: var(--blue);
-`;
-
-const ResetButton = styled(BasicButton)`
-  border: solid 0.1rem white;
-  color: var(--blue);
-`;
-
-const ErrorText = styled.p`
-  margin: 0;
-  padding: 0.1rem 0.3rem;
-  font-size: 1rem;
-  font-weight: 600;
-  text-align: left;
-  border-radius: 0.3rem;
-  text-align: center;
-  color: var(--red);
-  height: 100%;
-`;
 
 const Creation = (props) => {
   return (
@@ -148,7 +73,7 @@ const Creation = (props) => {
           return (
             <FormContainer onSubmit={handleSubmit}>
               <InputLabel htmlFor="name">Název receptu</InputLabel>
-              <input
+              <InputField
                 id="name"
                 placeholder="Please enter name"
                 type="text"
@@ -161,7 +86,7 @@ const Creation = (props) => {
                 <ErrorText>{errors.name}</ErrorText>
               )}{" "}
               <InputLabel htmlFor="description">Úvodní text</InputLabel>
-              <input
+              <InputField
                 id="description"
                 placeholder="Enter your description"
                 type="text"
@@ -192,7 +117,7 @@ const Creation = (props) => {
                 <ErrorText>{errors.ingredients}</ErrorText>
               )}{" "}
               <InputLabel htmlFor="info">Postup</InputLabel>
-              <input
+              <InputField
                 id="info"
                 placeholder="Enter info"
                 type="text"
@@ -205,7 +130,7 @@ const Creation = (props) => {
                 <ErrorText>{errors.info}</ErrorText>
               )}
               <InputLabel htmlFor="duration">Čas</InputLabel>
-              <input
+              <InputField
                 id="duration"
                 placeholder="Enter  duration"
                 type="number"
@@ -250,3 +175,48 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Creation);
+
+const PageLayout = styled.section`
+  display: grid;
+  grid-auto-flow: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;
+
+const FormContainer = styled(FormBox)`
+  grid-gap: 2rem;
+  padding: 1rem 0.5rem;
+`;
+
+const InputField = styled(InputBox)`
+  font-size: 1rem;
+  font-weight: 700;
+`;
+
+const InputLabel = styled(LabelText)`
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: left;
+  color: grey;
+`;
+
+const SubHeading = styled.h2`
+  padding: 0.1rem 0.3rem;
+  font-size: 1.2rem;
+  font-weight: 00;
+  text-align: left;
+  color: var(--blue);
+`;
+
+const SearchButton = styled(BasicButton)`
+  border: solid 0.1rem white;
+  border-radius: 0.3rem;
+  color: var(--blue);
+`;
+
+const ResetButton = styled(BasicButton)`
+  border: solid 0.1rem white;
+  color: var(--blue);
+`;

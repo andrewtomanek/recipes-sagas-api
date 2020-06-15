@@ -1,6 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 
+const StarsDisplay = (props) => {
+  const totalStars = 5;
+
+  return (
+    <Stars>
+      {[...Array(totalStars)].map((n, i) => (
+        <Star key={i}>{i < props.starsSelected ? "\u2605" : "\u2606"}</Star>
+      ))}
+    </Stars>
+  );
+};
+
+export default StarsDisplay;
+
 const Stars = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -18,17 +32,3 @@ const Star = styled.p`
   cursor: pointer;
   color: var(--purple);
 `;
-
-const StarsDisplay = (props) => {
-  const totalStars = 5;
-
-  return (
-    <Stars>
-      {[...Array(totalStars)].map((n, i) => (
-        <Star key={i}>{i < props.starsSelected ? "\u2605" : "\u2606"}</Star>
-      ))}
-    </Stars>
-  );
-};
-
-export default StarsDisplay;
