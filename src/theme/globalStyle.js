@@ -42,7 +42,7 @@ input {
   padding: 0.1rem 0.3rem;
   font-size: 1.2rem;
   font-weight: 700;
-  text-align: center;
+  text-align: left;
   color: var(--blue);
   border-bottom: 0.2rem solid lightgrey;
 

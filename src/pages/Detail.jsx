@@ -83,7 +83,6 @@ export const PageLayout = styled.section`
   align-items: center;
   margin: 0;
   padding: 0rem 2rem;
-  min-height: 80vh;
   overflow: hidden;
 `;
 

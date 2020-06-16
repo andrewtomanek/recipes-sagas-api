@@ -59,7 +59,7 @@ const ArrayInputField = (props) => {
         onBlur={handleBlur}
       />
       <InputButton type="button" onClick={removeIngredient}>
-        X Odebrat
+        x Odebrat
       </InputButton>
       <InputButton type="button" onClick={addIngredientBelow}>
         + Přidat

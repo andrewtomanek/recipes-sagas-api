@@ -36,4 +36,5 @@ const Star = styled.p`
   text-align: center;
   font-weight: 900;
   color: white;
+  cursor: pointer;
 `;
