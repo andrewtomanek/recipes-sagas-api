@@ -193,6 +193,7 @@ const FormContainer = styled(FormBox)`
 const InputField = styled(InputBox)`
   font-size: 1rem;
   font-weight: 700;
+  text-align: left;
 `;
 
 const InputLabel = styled(LabelText)`

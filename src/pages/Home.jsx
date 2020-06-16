@@ -46,7 +46,7 @@ const Home = (props) => {
                     <TimeText>{item.duration} min.</TimeText>
                   </TimeBox>
                   <RemoveButton onClick={() => props.remove(item.id)}>
-                    Remove
+                    {"\u{274C}"}
                   </RemoveButton>{" "}
                 </BottomBox>
               </ContentBox>

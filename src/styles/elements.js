@@ -27,7 +27,6 @@ export const FormBox = styled.div`
 export const InputBox = styled.input`
   margin: 0;
   padding: 0.1rem 0.3rem;
-  text-align: center;
   background-color: #fff;
   outline: none;
 `;
