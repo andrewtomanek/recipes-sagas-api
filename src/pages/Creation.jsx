@@ -212,12 +212,16 @@ const SubHeading = styled.h2`
 `;
 
 const SearchButton = styled(BasicButton)`
+  font-weight: 800;
+  font-size: 1rem;
   border: solid 0.1rem white;
   border-radius: 0.3rem;
   color: var(--blue);
 `;
 
 const ResetButton = styled(BasicButton)`
+  font-weight: 800;
+  font-size: 1rem;
   border: solid 0.1rem white;
   color: var(--blue);
 `;
